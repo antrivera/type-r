@@ -1,4 +1,5 @@
 const EnemyShip = require('./enemy_ship.js');
+const PlayerShip = require('./player_ship.js');
 
 const WORDS = [
   'apple', 'bye'
@@ -14,6 +15,8 @@ function Game() {
   this.background_y = 0;
   this.background_y2 = -400;
 
+
+  this.playerShip = new PlayerShip();
   this.addEnemyShips();
 
   document.addEventListener("keydown", this.fire(this.enemyShips), false);
@@ -26,6 +29,7 @@ Game.prototype.tick = function () {
 Game.prototype.draw = function (ctx) {
   ctx.clearRect(0, 0, this.x_dim, this.y_dim);
   this.drawBackground(ctx);
+  this.playerShip.draw(ctx);
   this.enemyShips.forEach(ship => ship.draw(ctx));
 };
 
