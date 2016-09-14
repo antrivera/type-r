@@ -17,10 +17,8 @@ EnemyShip.prototype.move = function () {
 };
 
 EnemyShip.prototype.draw = function (ctx, word) {
-  ctx.fillStyle = 'black';
-  ctx.fillRect(0, 0, 700, 500);
   ctx.fillStyle = 'white';
-  ctx.font = "italic " + 16 + "pt Arial ";
+  ctx.font = "bold " + 20 + "px VT323";
   ctx.fillText(this.word, this.pos[0], this.pos[1], 35);
 };
 

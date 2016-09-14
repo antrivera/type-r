@@ -9,6 +9,10 @@ function Game() {
   this.y_dim = 500;
   this.NUM_ENEMY_SHIPS = 2;
   this.enemyShips = [];
+  this.starField = new Image();
+  this.starField.src = './starfield.jpg';
+  this.background_y = 0;
+  this.background_y2 = -400;
 
   this.addEnemyShips();
 
@@ -21,6 +25,7 @@ Game.prototype.tick = function () {
 
 Game.prototype.draw = function (ctx) {
   ctx.clearRect(0, 0, this.x_dim, this.y_dim);
+  this.drawBackground(ctx);
   this.enemyShips.forEach(ship => ship.draw(ctx));
 };
 
@@ -38,6 +43,22 @@ Game.prototype.addEnemyShips = function () {
     });
     this.enemyShips.push(enemyShip);
   }
+};
+
+Game.prototype.drawBackground = function (ctx) {
+  ctx.drawImage(this.starField, 0, this.background_y);
+  ctx.drawImage(this.starField, 0, this.background_y2);
+  if (this.background_y > 400) {
+    // debugger;
+    this.background_y = -399;
+  }
+  if (this.background_y2 > 400) {
+    // debugger;
+    this.background_y2 = -399;
+  }
+
+  this.background_y += 1;
+  this.background_y2 += 1;
 };
 
 Game.prototype.fire = function (ships) {
