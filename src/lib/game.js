@@ -7,13 +7,13 @@ const WORDS = [
 
 function Game() {
   this.x_dim = 500;
-  this.y_dim = 500;
+  this.y_dim = 620;
   this.NUM_ENEMY_SHIPS = 2;
   this.enemyShips = [];
   this.starField = new Image();
   this.starField.src = './starfield.jpg';
   this.background_y = 0;
-  this.background_y2 = -400;
+  this.background_y2 = -700;
 
 
   this.playerShip = new PlayerShip();
@@ -50,15 +50,15 @@ Game.prototype.addEnemyShips = function () {
 };
 
 Game.prototype.drawBackground = function (ctx) {
-  ctx.drawImage(this.starField, 0, this.background_y);
-  ctx.drawImage(this.starField, 0, this.background_y2);
-  if (this.background_y > 400) {
+  ctx.drawImage(this.starField, 0, this.background_y, 500, 700);
+  ctx.drawImage(this.starField, 0, this.background_y2, 500, 700);
+  if (this.background_y > 700) {
     // debugger;
-    this.background_y = -399;
+    this.background_y = -699;
   }
-  if (this.background_y2 > 400) {
+  if (this.background_y2 > 700) {
     // debugger;
-    this.background_y2 = -399;
+    this.background_y2 = -699;
   }
 
   this.background_y += 1;
