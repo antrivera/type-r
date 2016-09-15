@@ -25,10 +25,13 @@ EnemyShip.prototype.draw = function (ctx) {
   ctx.fillText(this.word, this.pos[0], this.pos[1] + 80, 35);
 };
 
-EnemyShip.prototype.hit = function (letter) {
-  if (this.word[0] === letter) {
+EnemyShip.prototype.hit = function (letter, target) {
+  if ((target === this || target === null) && this.word[0] === letter) {
     this.word = this.word.slice(1);
+    return true;
   }
+
+  return false;
 };
 
 module.exports = EnemyShip;
