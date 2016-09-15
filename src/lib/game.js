@@ -1,9 +1,6 @@
 const EnemyShip = require('./enemy_ship.js');
 const PlayerShip = require('./player_ship.js');
-
-const WORDS = [
-  'apple', 'bye', 'hello', 'test', 'computer'
-]
+const randomWords = require('random-words');
 
 function Game() {
   this.x_dim = 500;
@@ -20,6 +17,10 @@ function Game() {
 
   document.addEventListener("keydown", this.fire(this.enemyShips), false);
 }
+
+Game.prototype.getRandomWord = function () {
+  return randomWords();
+};
 
 Game.prototype.tick = function () {
   this.moveObjects();
@@ -42,7 +43,7 @@ Game.prototype.addEnemyShips = function () {
       pos: [this.randomPosition(), 10],
       vel: [0, 2],
       game: this,
-      word: WORDS[Math.floor(Math.random() * WORDS.length)]
+      word: this.getRandomWord()
     });
     this.enemyShips.push(enemyShip);
   }
@@ -51,7 +52,7 @@ Game.prototype.addEnemyShips = function () {
 Game.prototype.drawBackground = function (ctx) {
   ctx.drawImage(this.starField, 0, this.background_y, 500, 700);
   ctx.drawImage(this.starField, 0, this.background_y2, 500, 700);
-  
+
   if (this.background_y > 700) {
     this.background_y = -699;
   }

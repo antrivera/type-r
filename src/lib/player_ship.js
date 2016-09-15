@@ -23,6 +23,8 @@ PlayerShip.prototype.fire = function (ships, letter) {
       let x_len = ship.pos[0] > 250 ? ship.pos[0] - 250 : -(250 - ship.pos[0]);
       let y_len = 700 - ship.pos[1];
       this.angle = Math.atan(x_len/y_len);
+    } else {
+      this.target = null;
     }
   });
 };

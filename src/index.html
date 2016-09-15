@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./styles.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="./styles.css" media="screen" charset="utf-8">
+    <script src="https://code.createjs.com/soundjs-0.6.2.min.js"></script>
     <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
     <script type="text/javascript" src="bundle.js"></script>
@@ -12,5 +13,7 @@
     <div class="game-window">
       <canvas id="canvas" width="500" height="620"></canvas>
     </div>
+    <audio id="laser" src="assets/laser.mp3" preload="auto"></audio>
+    <audio id="explosion" src="assets/explosion.mp3" preload="auto"></audio>
   </body>
 </html>

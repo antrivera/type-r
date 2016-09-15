@@ -1,0 +1,23 @@
+{
+  "name": "type-r",
+  "version": "1.0.0",
+  "description": "A typing-based shooter game",
+  "main": "typer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antrivera/type-r.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antrivera/type-r/issues"
+  },
+  "homepage": "https://github.com/antrivera/type-r#readme",
+  "dependencies": {
+    "random-words": "0.0.1"
+  }
+}
