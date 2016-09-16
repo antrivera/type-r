@@ -70,7 +70,7 @@
 	  this.NUM_ENEMY_SHIPS = 2;
 	  this.enemyShips = [];
 	  this.starField = new Image();
-	  this.starField.src = './src/starfield.jpg';
+	  this.starField.src = './src/assets/images/starfield.jpg';
 	  this.background_y = 0;
 	  this.background_y2 = -700;
 
@@ -347,7 +347,7 @@
 	  this.word = options.word;
 	  this.health = this.word.length;
 	  this.img = new Image();
-	  this.img.src = './src/ufo.png';
+	  this.img.src = './src/assets/images/ufo.png';
 	}
 
 	EnemyShip.prototype.move = function () {
@@ -411,8 +411,8 @@
 	function PlayerShip() {
 	  this.img = new Image();
 	  this.laser_img = new Image();
-	  this.laser_img.src = './src/laser.png';
-	  this.img.src = './src/ship.png';
+	  this.laser_img.src = './src/assets/images/laser.png';
+	  this.img.src = './src/assets/images/ship.png';
 	  this.angle = 0;
 	  this.x_pos = 250;
 	  this.y_pos = 550;

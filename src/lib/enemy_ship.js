@@ -5,7 +5,7 @@ function EnemyShip(options) {
   this.word = options.word;
   this.health = this.word.length;
   this.img = new Image();
-  this.img.src = './src/ufo.png';
+  this.img.src = './src/assets/images/ufo.png';
 }
 
 EnemyShip.prototype.move = function () {

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./src/styles.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="./src/assets/css/styles.css" media="screen" charset="utf-8">
     <script src="https://code.createjs.com/soundjs-0.6.2.min.js"></script>
     <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
@@ -10,11 +10,21 @@
     <title>Type-R</title>
   </head>
   <body>
-    <div class="game-window">
-      <canvas id="canvas" width="500" height="620"></canvas>
+    <div class="main">
+      <div class="game-window">
+        <canvas id="canvas" width="500" height="620"></canvas>
+      </div>
+
+      <label id="info-container">
+        Aliens are invading and it's up to you to save Earth! </br>
+        Type out the words that appear near alien ships to fire,
+        Press backspace to release target lock. </br>
+        If you let them reach you, you're finished! </br>
+        Good luck!
+      </label>
     </div>
-    <audio id="laser" src="src/assets/laser.mp3" preload="auto"></audio>
-    <audio id="explosion" src="src/assets/explosion.mp3" preload="auto"></audio>
-    <audio id="miss" src="src/assets/miss.mp3" preload="auto"></audio>
+    <audio id="laser" src="src/assets/sounds/laser.mp3" preload="auto"></audio>
+    <audio id="explosion" src="src/assets/sounds/explosion.mp3" preload="auto"></audio>
+    <audio id="miss" src="src/assets/sounds/miss.mp3" preload="auto"></audio>
   </body>
 </html>
