@@ -1,5 +1,7 @@
 ## Type-R
 
+Live Link: https://antrivera.github.io/type-r/
+
 ### Background
 
 Type-R is a game centered around typing quickly and accurately. The player controls a ship (A "type-R" model) and must fend off alien ships by typing the words/letters that appear next to the given ship before it reaches the player.
@@ -50,7 +52,7 @@ Next, since the player ship remains in a fixed position in the middle and at the
 
 A right triangle can be formed from the player ship to the alien target, and the lengths of the opposite and adjacent sides of this triangle relative to the angle that the player ship should make are obtained by simple subtractions from the players fixed position.
 
-Finally, the angle is obtained through the arctangent function, using the previously mentioned side lengths. 
+Finally, the angle is obtained through the arctangent function, using the previously mentioned side lengths.
 
 ### To-do
 
