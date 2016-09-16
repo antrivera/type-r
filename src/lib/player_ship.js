@@ -1,8 +1,8 @@
 function PlayerShip() {
   this.img = new Image();
   this.laser_img = new Image();
-  this.laser_img.src = './laser.png';
-  this.img.src = './ship.png';
+  this.laser_img.src = './src/laser.png';
+  this.img.src = './src/ship.png';
   this.angle = 0;
   this.x_pos = 250;
   this.y_pos = 550;

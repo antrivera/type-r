@@ -8,7 +8,7 @@ function Game() {
   this.NUM_ENEMY_SHIPS = 2;
   this.enemyShips = [];
   this.starField = new Image();
-  this.starField.src = './starfield.jpg';
+  this.starField.src = './src/starfield.jpg';
   this.background_y = 0;
   this.background_y2 = -700;
 
