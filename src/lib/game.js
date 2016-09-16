@@ -13,6 +13,7 @@ function Game() {
   this.background_y2 = -700;
 
   this.titleScreen = true;
+  this.gameOver = false;
   this.round2 = false;
   this.score = '0';
 
@@ -51,12 +52,26 @@ Game.prototype.draw = function (ctx) {
     ctx.fillText("War on Words", 270, 300);
     ctx.font = 20 + "px VT323";
     ctx.fillText("Press [Enter] to Start", 260, 350);
+    this.playerShip.draw(ctx);
+  } else if (this.gameOver) {
+
+    while (this.enemyShips.length > 0) {
+      this.enemyShips.pop();
+    }
+
+    ctx.fillStyle = 'white';
+    ctx.font = "bold " + 72 + "px VT323";
+    ctx.fillText("GAME OVER", 125, 250);
+    ctx.font = 32 + "px VT323";
+    ctx.fillText("Your Score: " + this.score, 160, 300);
+    ctx.font = 20 + "px VT323";
+    ctx.fillText("Press [Enter] to Play Again", 150, 350);
   } else {
     ctx.font = "bold " + 20 + "px VT323";
     ctx.fillText("Score: " + this.score, 25, 25);
+    this.playerShip.draw(ctx);
   }
 
-  this.playerShip.draw(ctx);
   this.enemyShips.forEach(ship => ship.draw(ctx));
 };
 
@@ -74,6 +89,10 @@ Game.prototype.addEnemyShips = function () {
     });
     this.enemyShips.push(enemyShip);
   }
+};
+
+Game.prototype.setGameOver = function () {
+  this.gameOver = true;
 };
 
 Game.prototype.drawBackground = function (ctx) {
@@ -103,85 +122,146 @@ Game.prototype.fire = function (ships) {
         if (this.titleScreen) {
           this.titleScreen = false;
         }
+
+        if (this.gameOver) {
+          this.gameOver = false;
+          this.score = '0';
+          this.NUM_ENEMY_SHIPS = 2;
+          this.round2 = false;
+        }
         break;
       case 8:
+        if (this.gameOver)
+          return;
         this.playerShip.target = null;
       case 65:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'a')
         break;
       case 66:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'b');
         break;
       case 67:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'c');
         break;
       case 68:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'd');
         break;
       case 69:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'e');
         break;
       case 70:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'f');
         break;
       case 71:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'g');
         break;
       case 72:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'h');
         break;
       case 73:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'i');
         break;
       case 74:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'j');
         break;
       case 75:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'k');
         break;
       case 76:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'l');
         break;
       case 77:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'm');
         break;
       case 78:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'n');
         break;
       case 79:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'o');
         break;
       case 80:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'p');
         break;
       case 81:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'q');
         break;
       case 82:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'r');
         break;
       case 83:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 's');
         break;
       case 84:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 't');
         break;
       case 85:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'u');
         break;
       case 86:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'v');
         break;
       case 87:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'w');
         break;
       case 88:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'x');
         break;
       case 89:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'y');
         break;
       case 90:
+        if (this.gameOver)
+          return;
         this.playerShip.fire(ships, 'z');
         break;
       default:

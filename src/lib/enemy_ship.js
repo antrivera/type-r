@@ -16,6 +16,10 @@ EnemyShip.prototype.move = function () {
     this.pos[0] = this.game.randomPosition();
     this.pos[1] = -10;
   }
+
+  if (this.pos[0] === 250 || this.pos[1] === 500) {
+    this.game.setGameOver();
+  }
 };
 
 EnemyShip.prototype.draw = function (ctx) {
