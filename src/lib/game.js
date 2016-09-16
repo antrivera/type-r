@@ -12,8 +12,11 @@ function Game() {
   this.background_y = 0;
   this.background_y2 = -700;
 
+  this.titleScreen = true;
+  this.round2 = false;
+  this.score = '0';
+
   this.playerShip = new PlayerShip();
-  this.addEnemyShips();
 
   document.addEventListener("keydown", this.fire(this.enemyShips), false);
 }
@@ -23,12 +26,36 @@ Game.prototype.getRandomWord = function () {
 };
 
 Game.prototype.tick = function () {
+  if (!this.titleScreen && this.enemyShips.length < 2) {
+    this.addEnemyShips();
+  }
+
+  if (this.score > 1000 && !this.round2) {
+    this.NUM_ENEMY_SHIPS++;
+    this.addEnemyShips();
+    this.round2 = true;
+  }
+
   this.moveObjects();
 };
 
 Game.prototype.draw = function (ctx) {
   ctx.clearRect(0, 0, this.x_dim, this.y_dim);
   this.drawBackground(ctx);
+
+  if (this.titleScreen) {
+    ctx.fillStyle = 'white';
+    ctx.font = "bold " + 72 + "px VT323";
+    ctx.fillText("Type-R", 250, 250);
+    ctx.font = 32 + "px VT323";
+    ctx.fillText("War on Words", 270, 300);
+    ctx.font = 20 + "px VT323";
+    ctx.fillText("Press [Enter] to Start", 260, 350);
+  } else {
+    ctx.font = "bold " + 20 + "px VT323";
+    ctx.fillText("Score: " + this.score, 25, 25);
+  }
+
   this.playerShip.draw(ctx);
   this.enemyShips.forEach(ship => ship.draw(ctx));
 };
@@ -38,7 +65,7 @@ Game.prototype.moveObjects = function () {
 };
 
 Game.prototype.addEnemyShips = function () {
-  for (let i = 0; i < this.NUM_ENEMY_SHIPS; i++) {
+  while (this.enemyShips.length < this.NUM_ENEMY_SHIPS) {
     let enemyShip = new EnemyShip({
       pos: [this.randomPosition(), 10],
       vel: [0, 2],
@@ -72,6 +99,11 @@ Game.prototype.randomPosition = function () {
 Game.prototype.fire = function (ships) {
   return (e) => {
     switch (e.keyCode) {
+      case 13:
+        if (this.titleScreen) {
+          this.titleScreen = false;
+        }
+        break;
       case 8:
         this.playerShip.target = null;
       case 65:

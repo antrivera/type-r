@@ -9,15 +9,12 @@ function EnemyShip(options) {
 }
 
 EnemyShip.prototype.move = function () {
-  this.pos[0] += this.vel[0];
+  this.pos[0] += this.pos[0] < 250 ? 0.50 : -0.50;
   this.pos[1] += this.vel[1];
 
   if (this.pos[1] + 60 > this.game.y_dim) {
     this.pos[0] = this.game.randomPosition();
     this.pos[1] = -10;
-    if (!this.word) {
-      this.word = "word";
-    }
   }
 };
 
@@ -37,12 +34,16 @@ EnemyShip.prototype.draw = function (ctx) {
 EnemyShip.prototype.hit = function (letter, target) {
   if ((target === this || target === null) && this.word[0] === letter) {
     this.word = this.word.slice(1);
-    this.pos[1] -= 3;
+    this.pos[1] -= 8;
 
-    let laser = document.getElementById('laser').cloneNode();
-    laser.play();
+    let intScore = parseInt(this.game.score, 10);
+    intScore += 10;
+    this.game.score = intScore.toString();
 
     if (this.word.length === 0) {
+      intScore += 100;
+      this.game.score = intScore.toString();
+
       let explosion = document.getElementById('explosion').cloneNode();
       explosion.play();
       return false;
